@@ -1,5 +1,5 @@
 use crate::server::handlers::*;
-use axum::routing::get;
+use axum::routing::{get, post};
 use axum::Router;
 
 /// Returns the API routes.
@@ -16,5 +16,7 @@ use axum::Router;
 ///
 /// reference: <https://docs.rs/axum/latest/axum/routing/index.html>
 pub(crate) fn get_api_router() -> Router {
-    Router::new().route("/health", get(health))
+    Router::new()
+        .route("/health", get(health))
+        .route("/save_image", post(save_image))
 }

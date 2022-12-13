@@ -16,6 +16,9 @@ mod error;
 /// HTTP server implementation.
 pub mod server;
 
+/// Image data and operations.
+pub mod image;
+
 use crate::error::Result;
 use std::env;
 use std::net::SocketAddr;

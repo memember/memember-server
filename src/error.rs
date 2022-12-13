@@ -30,9 +30,21 @@ pub enum Error {
     #[error("Failed to parse integer: `{0}`")]
     IntParse(#[from] std::num::ParseIntError),
 
+    /// Error that may occur while parsing integers.
+    #[error("Failed to parse integer: `{0}`")]
+    TryIntParse(#[from] std::num::TryFromIntError),
+
     /// Error that may occur while interacting with environment variables.
     #[error("Environment variable error: `{0}`")]
     Var(#[from] std::env::VarError),
+
+    /// Error that is associated with parsing `multipart/form-data` requests.
+    #[error("Multipart error: `{0}`")]
+    Multipart(#[from] axum::extract::multipart::MultipartError),
+
+    /// Error that may occur during image operations.
+    #[error("Image error: `{0}`")]
+    Image(#[from] image::error::ImageError),
 }
 
 /// Response implementation for error.
